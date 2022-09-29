@@ -1,7 +1,36 @@
-  public int playerHealth=30;
-  public int playerAC=12;
-  private int playerChanceToHit=4;
-  private int playerDamage=1;
+class Player
+{
+  public int playerHealth;
+  public int playerAC;
+  private int playerChanceToHit;
+  private int playerDamage;
+  
+  Player(int playerHealth ,int playerAC , int playerChanceToHit , int playerDamage)
+  {
+    this.playerHealth=playerHealth;
+    this.playerAC=playerAC;
+    this.playerChanceToHit=playerChanceToHit;
+    this.playerDamage=playerDamage;
+  }
+  
+  private void lossScreen()
+  {
+  if(player1.playerHealth<=0)
+  {
+    lose();
+  }
+  }
+  
+  private void lose()
+  {
+    {
+    background(0);
+    stroke(4);
+    textFont(f, 50);
+    fill(0, 255, 255);
+    text("You Lose!", (width/2)-50, height/2);
+  }
+}
   
   public int getPlayerAC()
   {
@@ -23,21 +52,21 @@
 
     int damage=0;
     int rolled=rollD20+playerChanceToHit;
-    if (rolled>bossAC && rollD20!=20)
+    if (rolled>boss1.bossAC && rollD20!=20)
     {
       println("Nice, you rolled "+rolled+".");
       damage=rollD6+playerDamage;
-      hit();
-      bossHealth=bossHealth-damage;
-      println("Good strike! You dealt "+damage+" damage. The boss has "+bossHealth+" life left");
+      playerHit();
+      boss1.bossHealth=boss1.bossHealth-damage;
+      println("Good strike! You dealt "+damage+" damage. The boss has "+boss1.bossHealth+" life left");
       return damage;
     } else if (rollD20==20)
     {
       println("CRIT!");
       damage=((rollD6)*2)+playerDamage;
-      hit();
-      bossHealth=bossHealth-damage;
-      println("You strike the boss with a fury never before seen! You dealt "+damage+" damage. The boss has "+bossHealth+" life left.");
+      playerHit();
+      boss1.bossHealth=boss1.bossHealth-damage;
+      println("You strike the boss with a fury never before seen! You dealt "+damage+" damage. The boss has "+boss1.bossHealth+" life left.");
       return damage;
     } else
     {
@@ -45,6 +74,6 @@
       rollD20=0;
       rolled=0;
     }
-    turnCounter+=1;
     return damage;
   }
+}

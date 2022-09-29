@@ -31,12 +31,6 @@ class Boss
     //turnToPlayer();
   }
 
-  private void turnToPlayer()
-  {
-    fill(0, 0, 255);
-    stroke(0);
-    //Turn Change Animation
-  }
 
   public int getBossAC()
   {
@@ -45,22 +39,22 @@ class Boss
   
   private void bossAttack()
   {
-    getPlayerAC();
+    player1.getPlayerAC();
     int rolled=rollD20+bossChanceToHit;
-    if (rolled>playerAC && rollD20!=20)
+    if (rolled>player1.playerAC && rollD20!=20)
     {
-      println("Nice, you rolled "+rolled+".");
+      println("The boss rolled a "+rolled+".");
       int damage = rollD4+bossDamage;
-      playerHealth=playerHealth-damage;
-      println("Oof, the boss did "+damage+" damage. You have "+playerHealth+" life left");
+      player1.playerHealth=player1.playerHealth-damage;
+      println("Oof, the boss did "+damage+" damage. You have "+player1.playerHealth+" life left");
       rolled=0;
       damage=0;
     } else if (rollD20==20)
     {
       println("OH NO, THE MONSTER GOT A CRIT!");
       int damage = (rollD4*2)+bossDamage;
-      playerHealth=playerHealth-damage;
-      println("You feel the full strength of the beast, as it deals "+damage+" damage. You have "+playerHealth+" life left.");
+      player1.playerHealth=player1.playerHealth-damage;
+      println("You feel the full strength of the beast, as it deals "+damage+" damage. You have "+player1.playerHealth+" life left.");
       rolled=0;
       damage=0;
     } else
@@ -69,7 +63,6 @@ class Boss
       rollD20=0;
       rolled=0;
     }
-    turnCounter+=1;
   }
 
   public void display(int bossX, int bossY, int size)
