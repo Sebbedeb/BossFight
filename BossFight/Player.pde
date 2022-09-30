@@ -40,7 +40,7 @@ class Player
   public void playerHit()
   {
     stroke(4);
-    textFont(f,36);
+    textFont(f,80);
     fill(255,255,0);
     text("HIT!",width/2,height/2);
     counter=0;

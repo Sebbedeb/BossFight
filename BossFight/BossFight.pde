@@ -4,21 +4,19 @@ private int rollD4;
 Boss boss1;
 Player player1;
 public int counter;
-public int bossCounter;
-PFont f;
-boolean yourTurn;
+public PFont f;
+public boolean yourTurn;
 
 
 void setup()
 {
-  bossCounter=100;
   counter=0;
   f = createFont("Arial", 16, true);
-  size(400, 400);
+  size(800, 800);
   background(175);
   player1 = new Player(50, 10, 1, 1);
   boss1 = new Boss(30, 8, 1, 1);
-  boss1.display(width/2, height/2, 100);
+  boss1.display(width/2, height/2, 200);
   yourTurn=true;
 
   afterHit();
@@ -26,7 +24,6 @@ void setup()
 
 void draw()
 {
-  bossCounter++;
   afterHit();
   counter++;
   rollD20=int (random(1, 21));
@@ -59,7 +56,7 @@ void mousePressed()
   {
     background(175);
     stroke(4);
-    textFont(f, 50);
+    textFont(f, 100);
     fill(0, 255, 0);
     text("YOU WIN!", (width/2)-50, height/2);
   }
@@ -69,7 +66,6 @@ void mousePressed()
     if (counter>=60)
     {
       background(175);
-      boss1.display(width/2, height/2, 100);
-      bossCounter=0;
+      boss1.display(width/2, height/2, 200);
     }
   }
