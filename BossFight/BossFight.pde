@@ -1,11 +1,11 @@
 private int rollD20;
 private int rollD6;
 private int rollD4;
-Boss boss1;
-Player player1;
 public int counter;
 public PFont f;
 public boolean yourTurn;
+Boss boss1;
+Player player1;
 
 
 void setup()
